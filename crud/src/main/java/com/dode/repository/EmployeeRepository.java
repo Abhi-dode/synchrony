@@ -19,5 +19,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	@Transactional
 	@Query("update Employee e set e.esalary = e.esalary + (e.esalary * :percentage / 100) where e.eno = :eno")
 	public int salaryIncrement(Long eno, Float percentage);
-	
+		
 }

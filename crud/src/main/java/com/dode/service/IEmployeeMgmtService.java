@@ -10,5 +10,6 @@ public interface IEmployeeMgmtService {
 	public List<Employee> findEmployeeStartWithName(String initialName);
 	public List<Employee> findEmployeeByDept(String dept);
 	public Employee salaryIncremat(Long eno, Float percentage);
-	public void updateEmployee(Employee employee);
+	public Employee updateEmployee(Employee employee);
+	public void deleteEmployee(Integer id);
 }

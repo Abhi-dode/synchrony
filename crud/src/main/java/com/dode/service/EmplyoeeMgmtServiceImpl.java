@@ -54,6 +54,7 @@ public class EmplyoeeMgmtServiceImpl implements IEmployeeMgmtService {
 		return employeeRepo.findByEdepartment(dept);
 	}
 
+	//Salary increment calculation we are doing in repo class
 	@Override
 	public Employee salaryIncremat(Long eno, Float percentage) {
 		int update=employeeRepo.salaryIncrement(eno, percentage);
@@ -65,8 +66,17 @@ public class EmplyoeeMgmtServiceImpl implements IEmployeeMgmtService {
 	}
 
 	@Override
-	public void updateEmployee(Employee employee) {
+	public Employee updateEmployee(Employee employee) {
+		//First find employee
+		Employee dbEmployee=employeeRepo.getReferenceById(employee.getId());
+		dbEmployee.setEname(employee.getEname()); dbEmployee.setEno(employee.getEno()); dbEmployee.setEsalary(employee.getEsalary()); dbEmployee.setEdepartment(employee.getEdepartment());
+		return employeeRepo.save(dbEmployee);
 		
+	}
+
+	@Override
+	public void deleteEmployee(Integer id) {
+		employeeRepo.deleteById(id);
 	}
 	
 	
